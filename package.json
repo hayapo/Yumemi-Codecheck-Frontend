@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint:next": "next lint --dir src",
+    "lint:eslint": "eslint ./src/**/*.{js,ts,tsx}"
   },
   "dependencies": {
     "axios": "^1.2.1",
