@@ -17,6 +17,9 @@ export default function Home() {
           <h2>都道府県を選択する</h2>
           <PrefectureSelect />
         </section>
+        <section id="Prefecture Select Section">
+          <h2>人口構成</h2>
+        </section>
       </div>
     </div>
   )
