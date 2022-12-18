@@ -1,8 +1,11 @@
-import { PrefectureSelect } from "components/organisms/PrefectureSelect"
 import Head from "next/head"
+import { useState } from "react"
+import { PrefectureSelect } from "components/organisms/PrefectureSelect"
+import { Prefecture } from "types/apiResponses"
 import styles from "styles/Home.module.css"
 
 export default function Home() {
+  const [checkedPrefectures, setCheckedPrefectures] = useState<Prefecture[]>([])
   return (
     <div className={styles.container}>
       <Head>
@@ -15,7 +18,7 @@ export default function Home() {
         <div className={styles.title}>ゆめみ コードチェック課題</div>
         <section id="Prefecture Select Section">
           <h2>都道府県を選択する</h2>
-          <PrefectureSelect />
+          <PrefectureSelect setCheckedPrefectures={setCheckedPrefectures} />
         </section>
         <section id="Prefecture Select Section">
           <h2>人口構成</h2>

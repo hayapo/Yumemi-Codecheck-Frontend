@@ -1,12 +1,14 @@
 import { CheckBox } from "components/atoms/CheckBox"
-import { Prefecture } from "types/apiResponses"
+import { CheckPrefecture } from "types/apiResponses"
 
 type Props = {
-  prefecture: Prefecture
+  prefecture: CheckPrefecture
+  changeCheckState: (prefCode: number) => void
 }
 
 export const PrefectureCheckBox: React.FC<Props> = ({
   prefecture,
+  changeCheckState,
   ...props
 }) => {
   return (
@@ -14,6 +16,7 @@ export const PrefectureCheckBox: React.FC<Props> = ({
       <CheckBox
         key={prefecture.prefCode}
         label={prefecture.prefName}
+        onClick={() => changeCheckState(prefecture.prefCode)}
         {...props}
       />
     </div>
