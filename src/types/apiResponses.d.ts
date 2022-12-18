@@ -11,18 +11,18 @@ export type PrefectureResponse = {
 }
 
 // チェックボックスで選択した都道府県の型
-export type SelectPrefecture = Prefecture & {
+export type CheckPrefecture = Prefecture & {
   checked: boolean
 }
 
 // RESAS APIから帰ってくる人口構成情報の型
 export type Population = {
-  label: string
-  data: {
-    year: number
-    value: number
-    rate: number
-  }[]
+  year: number
+  value: number
+}
+
+export type PrefecturePopulation = Prefecture & {
+  populations: Population[]
 }
 
 // 都道府県別人口構成取得(API/api/v1/population)のレスポンスの型
@@ -30,6 +30,9 @@ export type PopulationResponse = {
   message: string | null
   result: {
     boundaryYear: number
-    data: Population[]
+    data: {
+      label: string
+      data: Population[]
+    }[]
   }
 }
