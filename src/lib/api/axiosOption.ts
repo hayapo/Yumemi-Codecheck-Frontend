@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios"
 
-const baseUrl = "https://opendata.resas-portal.go.jp"
+const baseUrl = "https://opendata.resas-portal.go.jp/"
 
 export const AxiosOption = (endpoint: string): AxiosRequestConfig => {
   const option: AxiosRequestConfig = {}
