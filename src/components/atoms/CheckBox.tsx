@@ -1,11 +1,10 @@
-type Props = React.ComponentProps<"input"> & {
+export type Props = React.ComponentProps<"input"> & {
   label: string
 }
-
 export const CheckBox: React.FC<Props> = ({ label, ...props }) => {
   return (
     <label>
-      <input {...props} type="checkbox" />
+      <input type="checkbox" {...props} />
       <span>{label}</span>
     </label>
   )

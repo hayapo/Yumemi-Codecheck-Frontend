@@ -1,17 +1,13 @@
 import { useCheckPrefecture } from "lib/hooks/useCheckPrefecture"
 import { PrefectureCheckBox } from "components/molecules/PrefectureCheckBox"
 import { Prefecture } from "types/apiResponses"
-import PrefectureSelectStyles from "styles/PrefectureSelect.module.css"
 import { useEffect, useMemo } from "react"
 
 type Props = {
-  setCheckedPrefectures: (prefecture: Prefecture[]) => void
+  onChangeCheck: (prefecture: Prefecture[]) => void
 }
 
-export const PrefectureSelect: React.FC<Props> = ({
-  setCheckedPrefectures,
-  ...props
-}) => {
+export const PrefectureSelect: React.FC<Props> = ({ onChangeCheck }) => {
   const { checkPrefectures, toggleCheck } = useCheckPrefecture()
 
   const checkedPrefectures = useMemo(
@@ -20,19 +16,13 @@ export const PrefectureSelect: React.FC<Props> = ({
   )
 
   useEffect(() => {
-    setCheckedPrefectures(checkedPrefectures)
-  }, [setCheckedPrefectures, checkedPrefectures])
+    onChangeCheck(checkedPrefectures)
+  }, [onChangeCheck, checkedPrefectures])
 
   return (
-    <div className={PrefectureSelectStyles.prefectureselect}>
-      {checkPrefectures.map((pref) => (
-        <PrefectureCheckBox
-          key={pref.prefCode}
-          prefecture={pref}
-          changeCheckState={toggleCheck}
-          {...props}
-        />
-      ))}
-    </div>
+    <PrefectureCheckBox
+      prefectures={checkPrefectures}
+      onChangeCheck={toggleCheck}
+    />
   )
 }
