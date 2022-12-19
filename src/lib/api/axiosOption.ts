@@ -17,7 +17,7 @@ export const AxiosOption = (endpoint: string): AxiosRequestConfig => {
     option.headers = {}
   }
   // API-KEYを設定
-  option.headers["X-API-KEY"] = process.env.RESAS_API_KEY
+  option.headers["X-API-KEY"] = process.env.NEXT_PUBLIC_API_KEY
 
   return option
 }
