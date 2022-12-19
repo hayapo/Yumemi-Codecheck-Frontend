@@ -3,6 +3,7 @@ import { useState } from "react"
 import { PrefectureSelect } from "components/organisms/PrefectureSelect"
 import { Prefecture } from "types/apiResponses"
 import styles from "styles/Home.module.css"
+import { PopulationGraph } from "components/organisms/PopulationGraph"
 
 export default function Home() {
   const [checkedPrefectures, setCheckedPrefectures] = useState<Prefecture[]>([])
@@ -16,12 +17,13 @@ export default function Home() {
 
       <div className={styles.main}>
         <div className={styles.title}>ゆめみ コードチェック課題</div>
-        <section id="Prefecture Select Section">
+        <section id="prefecture_select_section">
           <h2>都道府県を選択する</h2>
-          <PrefectureSelect setCheckedPrefectures={setCheckedPrefectures} />
+          <PrefectureSelect onChangeCheck={setCheckedPrefectures} />
         </section>
-        <section id="Prefecture Select Section">
+        <section id="population_graph_section">
           <h2>人口構成</h2>
+          <PopulationGraph prefectures={checkedPrefectures} />
         </section>
       </div>
     </div>
