@@ -7,9 +7,11 @@ type Props = {
   prefecturePopulations: PrefecturePopulation[]
 }
 
+/* 現在の年から30年前までの人口構成推移を表示する */
 const LATEST_YEAR = new Date().getFullYear()
 const OLDEST_YEAR = LATEST_YEAR - 30
 
+/* HightChartsのOption */
 const options: Highcharts.Options = {
   chart: {
     type: "line",
@@ -35,6 +37,7 @@ const options: Highcharts.Options = {
   },
 }
 
+/* HightChartsグラフを返すコンポーネント */
 export const Graph: React.FC<Props> = ({ prefecturePopulations }) => {
   const series = useMemo(() => {
     if (prefecturePopulations.length === 0) {
