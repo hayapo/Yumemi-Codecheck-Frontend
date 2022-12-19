@@ -6,6 +6,7 @@ type Props = {
   prefectures: Prefecture[]
 }
 
+/* HightChartsグラフコンポーネントを返すコンポーネント */
 export const PopulationGraph: React.FC<Props> = ({ prefectures }) => {
   const { data } = usePopulations(prefectures)
 

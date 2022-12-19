@@ -7,6 +7,7 @@ type Props = {
   onChangeCheck: (prefecture: Prefecture[]) => void
 }
 
+/* 都道府県選択の最上位コンポーネント */
 export const PrefectureSelect: React.FC<Props> = ({ onChangeCheck }) => {
   const { checkPrefectures, toggleCheck } = useCheckPrefecture()
 

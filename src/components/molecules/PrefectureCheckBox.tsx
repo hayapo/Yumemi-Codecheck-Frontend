@@ -7,6 +7,7 @@ type Props = {
   onChangeCheck: (prefCode: number) => void
 }
 
+/* 全都道府県のチェックボックスコンポーネント */
 export const PrefectureCheckBox: React.FC<Props> = ({
   prefectures,
   onChangeCheck,

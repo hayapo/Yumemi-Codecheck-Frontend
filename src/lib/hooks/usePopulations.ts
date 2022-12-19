@@ -2,6 +2,7 @@ import useSWR from "swr"
 import { getPopulation } from "lib/api/getPopulation"
 import { Prefecture, PrefecturePopulation } from "types/apiResponses"
 
+/* Prefecureに人口構成情報を付加するカスタムフック */
 export const usePopulations = (prefectures: Prefecture[]) => {
   const { data } = useSWR(
     prefectures.map((pref) => pref.prefCode),

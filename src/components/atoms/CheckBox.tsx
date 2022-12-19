@@ -1,6 +1,8 @@
 export type Props = React.ComponentProps<"input"> & {
   label: string
 }
+
+/* チェックボックスコンポーネント */
 export const CheckBox: React.FC<Props> = ({ label, ...props }) => {
   return (
     <label>
