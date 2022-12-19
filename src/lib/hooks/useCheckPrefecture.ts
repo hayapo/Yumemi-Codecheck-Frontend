@@ -1,27 +1,22 @@
-import { getPrefectures } from "lib/api/getPrefectures"
-import { mockPrefectureResponse } from "lib/api/mockPrefectureResponse"
 import { useCallback, useEffect, useState } from "react"
-import { CheckPrefecture, Prefecture } from "types/apiResponses"
+import { CheckPrefecture } from "types/apiResponses"
+import { usePrefectures } from "./usePrefectures"
 
 export const useCheckPrefecture = () => {
-  const [prefectures, setPrefectures] = useState<Prefecture[]>([])
   const [checkPrefectures, setCheckPrefectures] = useState<CheckPrefecture[]>(
     []
   )
 
+  const { data } = usePrefectures()
+
   useEffect(() => {
-    const getPref = async () => {
-      const res = await getPrefectures()
-      setPrefectures(res)
-    }
-    getPref()
-    if (typeof prefectures === "undefined") return
-    const initCheck: CheckPrefecture[] = prefectures.map((pref) => ({
+    if (typeof data === "undefined") return
+    const initCheck: CheckPrefecture[] = data.map((pref) => ({
       ...pref,
       checked: false,
     }))
     setCheckPrefectures(initCheck)
-  }, [prefectures])
+  }, [data])
 
   const toggleCheck = useCallback(
     (prefCode: number) => {

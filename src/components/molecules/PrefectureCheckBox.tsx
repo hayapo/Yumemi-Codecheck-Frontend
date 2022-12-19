@@ -1,24 +1,26 @@
 import { CheckBox } from "components/atoms/CheckBox"
 import { CheckPrefecture } from "types/apiResponses"
+import PrefectureSelectStyles from "styles/PrefectureSelect.module.css"
 
 type Props = {
-  prefecture: CheckPrefecture
-  changeCheckState: (prefCode: number) => void
+  prefectures: CheckPrefecture[]
+  onChangeCheck: (prefCode: number) => void
 }
 
 export const PrefectureCheckBox: React.FC<Props> = ({
-  prefecture,
-  changeCheckState,
-  ...props
+  prefectures,
+  onChangeCheck,
 }) => {
   return (
-    <div>
-      <CheckBox
-        key={prefecture.prefCode}
-        label={prefecture.prefName}
-        onClick={() => changeCheckState(prefecture.prefCode)}
-        {...props}
-      />
+    <div className={PrefectureSelectStyles.prefectureCheckboxes}>
+      {prefectures.map((pref) => (
+        <CheckBox
+          label={pref.prefName}
+          id={`pref_${pref.prefCode}`}
+          key={pref.prefCode}
+          onChange={() => onChangeCheck(pref.prefCode)}
+        />
+      ))}
     </div>
   )
 }
