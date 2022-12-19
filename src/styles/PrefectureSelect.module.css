@@ -1,5 +1,5 @@
-/*都道府県選択セクション部分のスタイル*/
-.prefectureselect {
+/*都道府県選択チェックボックスのスタイル*/
+.prefectureCheckboxes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   gap: 0.5rem;
